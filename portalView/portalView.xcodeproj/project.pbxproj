@@ -49,6 +49,7 @@
 		6AB51E1A287C4702006FA205 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6AB51E04287C4701006FA205 /* OFL.txt */; };
 		6AB51E1B287C4702006FA205 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6AB51E05287C4701006FA205 /* README.txt */; };
 		6AB51E1E287C5294006FA205 /* CourseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB51E1D287C5294006FA205 /* CourseList.swift */; };
+		6ACD2A1A287C923600324AE6 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACD2A19287C923600324AE6 /* Course.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		6AB51E05287C4701006FA205 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		6AB51E1C287C4770006FA205 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6AB51E1D287C5294006FA205 /* CourseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseList.swift; sourceTree = "<group>"; };
+		6ACD2A19287C923600324AE6 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				6A75480C2875A8AB00A58F89 /* Section.swift */,
 				6A7548102875B67E00A58F89 /* Update.swift */,
 				6A43B7292875C74A00BA4EEF /* UpdateStore.swift */,
+				6ACD2A19287C923600324AE6 /* Course.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				6AB51DEB287C12DC006FA205 /* RingView.swift in Sources */,
 				6A43B7282875BD6500BA4EEF /* UpdateDetailView.swift in Sources */,
 				6A75480F2875B5B500A58F89 /* UpdateListView.swift in Sources */,
+				6ACD2A1A287C923600324AE6 /* Course.swift in Sources */,
 				6A43B7262875BCBF00BA4EEF /* UpdateRow.swift in Sources */,
 				6A7548002875531000A58F89 /* Home.swift in Sources */,
 				6A7548052875605500A58F89 /* HomeView.swift in Sources */,
