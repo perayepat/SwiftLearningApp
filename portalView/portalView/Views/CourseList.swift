@@ -7,43 +7,52 @@
 
     ///Using the negative min Y to take the whole screen space
     ///`-60` takes the left and right screen space into consideration  and spaces it properly
-
     ///Using `SecondShow` we are able to show the elements in the geometry reader in full screen
     ///Using `courseData` we can loop through each course item and apply the geometry reader to it
     /// IN reapeating the  data we are using the index value to get each of the state
-    /// * using the indicies we are able to target each course in course data and access thier show property
-    /// This allows us to use each cards geometry offsets to show the card full  screen no matter where it is on the screen
-
+    /// // 1 //  using the indicies we are able to target each course in course data and access thier show property
+    /// his allows us to use each cards geometry offsets to show the card full  screen no matter where it is on the screen
+    /// // 2 //  the Z index has been fixed , because each card has a zindex of 0 when its active it will take priority
+    /// // 3 // by creating the binding `active` we are able to trigger animaitons the same time goes fulll screen as we can't acces the show bool
+    ///
 import SwiftUI
 
 struct CourseList: View {
     @State var courses = courseData
-    
+    @State var active  = false
     var body: some View {
-        ScrollView {
-            
-            VStack(spacing: 30) {
-                
-                    Text("Course")
-                        .font(.largeTitle)
-                        .bold()
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading, 30)
-                        .padding(.top, 30)
-                
-                ForEach(courses.indices, id: \.self) { index in
-                    GeometryReader { geo in
-                        CourseView(show: self.$courses[index].show, course: self.courses[index]) //*//
-                            .offset(y: self.courses[index].show ?  -geo.frame(in:.global).minY : 0)
-                        
+        ZStack {
+            Color.black.opacity(active ? 0.5 : 0)
+                .animation(.linear, value: active)
+                .edgesIgnoringSafeArea(.all)
+            ScrollView {
+                VStack(spacing: 30) {
+                    
+                        Text("Course")
+                            .font(.largeTitle)
+                            .bold()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading, 30)
+                            .padding(.top, 30)
+                            .blur(radius: active ? 20 : 0)
+                    
+                    ForEach(courses.indices, id: \.self) { index in
+                        GeometryReader { geo in
+                            CourseView(show: self.$courses[index].show, active: self.$active, course: self.courses[index]) //1//
+                                .offset(y: self.courses[index].show ?  -geo.frame(in:.global).minY : 0)
+                            
+                        }
+                        .frame(height: 280)
+                        .frame(maxWidth: self.courses[index].show  ? .infinity : screen.width - 60)
+                        .zIndex(self.courses[index].show ? 1 : 0) //2//
                     }
-                    .frame(height: 280)
-                    .frame(maxWidth: self.courses[index].show  ? .infinity : screen.width - 60)
                 }
+                .frame(width: screen.width)
+                .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0), value: active)
             }
-            .frame(width: screen.width)
-            .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
-        }
+            .statusBar(hidden: active ? true : false)
+        } //3//
+//        .animation(.linear(duration: 0.09), value: active)
     }
 }
 
@@ -55,6 +64,7 @@ struct CourseList_Previews: PreviewProvider {
 
 struct CourseView: View {
     @Binding var show: Bool
+    @Binding var active: Bool
     var course: Course
     
     var body: some View {
@@ -123,6 +133,7 @@ struct CourseView: View {
             .shadow(color: Color(course.color), radius: 20, x: 0, y: 20)
             .onTapGesture {
                 self.show.toggle()
+                self.active.toggle()
             }
         }
         .frame(height: show ? screen.height : 280)
