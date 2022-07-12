@@ -4,21 +4,24 @@
     //
     //  Created by IACD-013 on 2022/07/12.
     //
-
+    /// When using combine the data can be edited in any view
+    
 import SwiftUI
 
 struct PostList: View {
-    @State var posts: [Post] = []
+    //MARK: Using Combine
+    @ObservedObject var store  = DataStore()
     
     var body: some View {
-        List(posts) { post in
-            Text("Hello, World!")
-        }
-        .onAppear{
-            Api().getPosts{ (posts) in
-                self.posts  = posts
+        List(store.posts) { post in
+            VStack(alignment: .leading, spacing: 8) {
+                Text(post.title)
+                    .font(.system(.title, design: .serif)).bold()
+                Text(post.body)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
             }
-        }
+        }.listStyle(.plain)
     }
 }
 
