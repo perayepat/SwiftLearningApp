@@ -26,7 +26,7 @@ struct CourseList: View {
             Color.black.opacity(active ? 0.5 : 0)
                 .animation(.linear, value: active)
                 .edgesIgnoringSafeArea(.all)
-            ScrollView {
+            ScrollView(.vertical) {
                 VStack(spacing: 30) {
                     
                         Text("Course")
@@ -97,7 +97,7 @@ struct CourseView: View {
             .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
             .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 20)
             .opacity(show ? 1 : 0)
-            
+          
             VStack {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 8.0) {
@@ -151,6 +151,11 @@ struct CourseView: View {
                 } else {
                     self.activeIndex = -1
                 }
+            }
+            if show {
+                CourseDetailView(course: course, show: $show,active: $active, activeIndex: $activeIndex)
+                    .background(Color.white)
+                    .animation(nil, value: show)
             }
         }
         .frame(height: show ? screen.height : 280)
