@@ -1,10 +1,4 @@
-    //
-    //  CourseList.swift
-    //  portalView
-    //
-    //  Created by IACD-013 on 2022/07/11.
-    //
-
+    // Notes
     ///Using the negative min Y to take the whole screen space
     ///`-60` takes the left and right screen space into consideration  and spaces it properly
     ///Using `SecondShow` we are able to show the elements in the geometry reader in full screen
@@ -14,12 +8,19 @@
     /// his allows us to use each cards geometry offsets to show the card full  screen no matter where it is on the screen
     /// // 2 //  the Z index has been fixed , because each card has a zindex of 0 when its active it will take priority
     /// // 3 // by creating the binding `active` we are able to trigger animaitons the same time goes fulll screen as we can't acces the show bool
-    ///
+    /// // 4 // We are passing the active index to the index so we know which card i being pressed and which card is active
+    /// //5// if stetment to get tht cards that arent active and fade them out
+    //
+
+
+
+
 import SwiftUI
 
 struct CourseList: View {
     @State var courses = courseData
     @State var active  = false
+    @State var activeIndex = -1
     var body: some View {
         ZStack {
             Color.black.opacity(active ? 0.5 : 0)
@@ -38,8 +39,16 @@ struct CourseList: View {
                     
                     ForEach(courses.indices, id: \.self) { index in
                         GeometryReader { geo in
-                            CourseView(show: self.$courses[index].show, active: self.$active, course: self.courses[index]) //1//
+                            CourseView(
+                                show: self.$courses[index].show,
+                                active: self.$active,
+                                activeIndex: self.$activeIndex,
+                                course: self.courses[index],
+                                index: index) //1//
                                 .offset(y: self.courses[index].show ?  -geo.frame(in:.global).minY : 0)
+                                .opacity(self.activeIndex != index && self.active ? 0 : 1) //5//
+                                .scaleEffect(self.activeIndex != index && self.active ? 0.2 : 1)
+                                .offset(x: self.activeIndex != index && self.active ? screen.height : 0)
                             
                         }
                         .frame(height: 280)
@@ -65,7 +74,9 @@ struct CourseList_Previews: PreviewProvider {
 struct CourseView: View {
     @Binding var show: Bool
     @Binding var active: Bool
+    @Binding var activeIndex: Int
     var course: Course
+    var index: Int
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -134,10 +145,17 @@ struct CourseView: View {
             .onTapGesture {
                 self.show.toggle()
                 self.active.toggle()
+                //4//
+                if self.show {
+                    self.activeIndex = self.index
+                } else {
+                    self.activeIndex = -1
+                }
             }
         }
         .frame(height: show ? screen.height : 280)
         .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0), value: show)
         .edgesIgnoringSafeArea(.all)
+
     }
 }
