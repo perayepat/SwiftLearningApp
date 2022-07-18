@@ -11,7 +11,9 @@ import SwiftUI
 struct portalViewApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+//            TabBar()
+            CourseList()
         }
     }
 }

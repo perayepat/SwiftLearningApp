@@ -16,9 +16,10 @@
 
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct CourseList: View {
-    @State var courses = courseData
+    @ObservedObject var store = CourseStore()
     @State var active  = false
     @State var activeIndex = -1
     var body: some View {
@@ -26,6 +27,8 @@ struct CourseList: View {
             Color.black.opacity(active ? 0.5 : 0)
                 .animation(.linear, value: active)
                 .edgesIgnoringSafeArea(.all)
+                
+                
             ScrollView(.vertical) {
                 VStack(spacing: 30) {
                     
@@ -37,23 +40,23 @@ struct CourseList: View {
                             .padding(.top, 30)
                             .blur(radius: active ? 20 : 0)
                     
-                    ForEach(courses.indices, id: \.self) { index in
+                    ForEach(store.courses.indices, id: \.self) { index in
                         GeometryReader { geo in
                             CourseView(
-                                show: self.$courses[index].show,
+                                show: self.$store.courses[index].show,
                                 active: self.$active,
                                 activeIndex: self.$activeIndex,
-                                course: self.courses[index],
+                                course: self.store.courses[index],
                                 index: index) //1//
-                                .offset(y: self.courses[index].show ?  -geo.frame(in:.global).minY : 0)
+                            .offset(y: self.store.courses[index].show ?  -geo.frame(in:.global).minY : 0)
                                 .opacity(self.activeIndex != index && self.active ? 0 : 1) //5//
                                 .scaleEffect(self.activeIndex != index && self.active ? 0.2 : 1)
                                 .offset(x: self.activeIndex != index && self.active ? screen.height : 0)
                             
                         }
                         .frame(height: 280)
-                        .frame(maxWidth: self.courses[index].show  ? .infinity : screen.width - 60)
-                        .zIndex(self.courses[index].show ? 1 : 0) //2//
+                        .frame(maxWidth: self.store.courses[index].show  ? .infinity : screen.width - 60)
+                        .zIndex(self.store.courses[index].show ? 1 : 0) //2//
                     }
                 }
                 .frame(width: screen.width)
@@ -129,7 +132,7 @@ struct CourseView: View {
                     }
                 }
                 Spacer()
-                Image(uiImage: course.image)
+                WebImage(url: course.image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: .infinity)
