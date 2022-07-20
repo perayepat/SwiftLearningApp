@@ -16,7 +16,7 @@ struct Home: View {
         ZStack {
             
                 //MARK: Root for every screen
-            Color(red: 0.9, green: 0.9, blue: 0.9)
+            Color("background2")
                 .edgesIgnoringSafeArea(.all)
             
                 //MARK: Home view & Top Bar
@@ -25,12 +25,12 @@ struct Home: View {
                 .background(
                     //MARK: TopView backgorund effect
                     VStack {
-                        LinearGradient(gradient: Gradient(colors: [Color("background2"), Color.white]), startPoint: .top, endPoint: .bottom)
+                        LinearGradient(gradient: Gradient(colors: [Color("background1"), Color("background2")]), startPoint: .top, endPoint: .bottom)
                             .frame(height: 200)
                         Spacer()
                     }
                 )
-                .background(Color.white)
+                .background(Color("background1"))
                 ///Effects
                 .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
                 .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 20)
@@ -64,7 +64,7 @@ struct Home: View {
                         }
                 )
             if showContent {
-                Color.white.edgesIgnoringSafeArea(.all)
+                BlurView(style: .systemUltraThinMaterial).edgesIgnoringSafeArea(.all)
                 ContentView()
                 
                 VStack {
@@ -83,7 +83,6 @@ struct Home: View {
                     .onTapGesture {
                         self.showContent = false
                     }
-                
             }
         }
     }
@@ -91,7 +90,7 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        Home().environment(\.colorScheme, .dark)
     }
 }
 

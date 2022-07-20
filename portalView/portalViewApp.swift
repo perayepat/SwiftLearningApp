@@ -13,7 +13,8 @@ struct portalViewApp: App {
         WindowGroup {
 //            ContentView()
 //            TabBar()
-            CourseList()
+//            Home()
+            Buttons()
         }
     }
 }

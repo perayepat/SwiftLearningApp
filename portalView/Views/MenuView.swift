@@ -35,7 +35,8 @@ struct MenuView: View {
             }
             .frame(maxWidth: .infinity)
             .frame(height: 300)
-            .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)), Color(#colorLiteral(red: 0.8705882353, green: 0.8941176471, blue: 0.9450980392, alpha: 1))]), startPoint: .top, endPoint: .bottom))
+//            .background(LinearGradient(gradient: Gradient(colors: [Color("background3"),Color("background3").opacity(0.6)]), startPoint: .top, endPoint: .bottom))
+            .background(BlurView(style: .systemUltraThinMaterial))
             .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
             .shadow(color: .black.opacity(0.2), radius: 20, x: 0, y: 20)
             .padding(.horizontal, 30)
@@ -67,7 +68,7 @@ struct MenuRow: View {
                 .font(.system(size: 20, weight: .light))
                 .imageScale(.large)
                 .frame(width: 32, height: 32)
-                .foregroundColor(.black)
+                
                 
             
             Text(title)

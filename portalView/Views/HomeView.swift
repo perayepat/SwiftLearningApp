@@ -27,13 +27,14 @@ struct HomeView: View {
                         self.showUpdate.toggle()
                     } label: {
                         Image(systemName: "bell")
-                            .renderingMode(.original)
+//                            .renderingMode(.original)
+                            .foregroundColor(.primary)
                             .font(.system(size: 16,weight: .medium))
                             .frame(width: 36, height: 36)
-                            .background(Color.white)
+                            .background(Color("background3"))
                             .clipShape(Circle())
-                            .shadow(color: Color.red.opacity(0.1), radius: 1, x: 0, y: 1)
-                            .shadow(color: Color.red.opacity(0.2), radius: 10, x: 0, y: 10)
+                            .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
+                            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
                     }
                     .sheet(isPresented: $showUpdate){
                             ///show new update view
@@ -113,7 +114,7 @@ struct WatchRingsView: View {
                 .modifier(FontModifier())
             }
             .padding(8)
-            .background(Color.white)
+            .background(Color("background3"))
             .cornerRadius(20)
             .modifier(ShadowModifier())
             
@@ -121,7 +122,7 @@ struct WatchRingsView: View {
                 RingView(color1: .red, color2: .purple, width: 32, height: 32, percent: 50, show: .constant(true))
             }
             .padding(8)
-            .background(Color.white)
+            .background(Color("background3"))
             .cornerRadius(20)
             .modifier(ShadowModifier())
             
@@ -129,7 +130,7 @@ struct WatchRingsView: View {
                 RingView(color1: .cyan, color2: .green, width: 32, height: 32, percent: 90, show: .constant(true))
             }
             .padding(8)
-            .background(Color.white)
+            .background(Color("background3"))
             .cornerRadius(20)
             .modifier(ShadowModifier())
         }

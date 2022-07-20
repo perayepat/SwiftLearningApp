@@ -18,6 +18,7 @@ struct AvatarView: View {
             Image("Avatar2")
                 .renderingMode(.original)
                 .resizable()
+                .aspectRatio(contentMode: .fill)
                 .frame(width: 36, height: 36)
                 .clipShape(Circle())
         }
