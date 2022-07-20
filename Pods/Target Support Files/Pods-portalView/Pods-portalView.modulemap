@@ -1,0 +1,6 @@
+framework module Pods_portalView {
+  umbrella header "Pods-portalView-umbrella.h"
+
+  export *
+  module * { export * }
+}

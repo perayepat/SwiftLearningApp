@@ -36,6 +36,8 @@
 		6A92E43D2887F0AB00AE2817 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92E43C2887F0AB00AE2817 /* LottieView.swift */; };
 		6A92E43F2887F2D900AE2817 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92E43E2887F2D900AE2817 /* LoadingView.swift */; };
 		6A92E4412887F7F100AE2817 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92E4402887F7F100AE2817 /* SuccessView.swift */; };
+		6A92E4432888015600AE2817 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A92E4422888015600AE2817 /* GoogleService-Info.plist */; };
+		6A92E445288839F800AE2817 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A92E444288839F700AE2817 /* UserStore.swift */; };
 		6AB51DEB287C12DC006FA205 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB51DEA287C12DC006FA205 /* RingView.swift */; };
 		6AB51DED287C449C006FA205 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB51DEC287C449B006FA205 /* Modifiers.swift */; };
 		6AB51E06287C4702006FA205 /* WorkSans-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AB51DEF287C4701006FA205 /* WorkSans-VariableFont_wght.ttf */; };
@@ -66,6 +68,7 @@
 		6ACD2A20287D67ED00324AE6 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACD2A1F287D67ED00324AE6 /* Data.swift */; };
 		6ACD2A22287D699900324AE6 /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACD2A21287D699900324AE6 /* PostList.swift */; };
 		6ACD2A24287D7F0600324AE6 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACD2A23287D7F0600324AE6 /* DataStore.swift */; };
+		A436A00E4106A33E96D6AA30 /* Pods_portalView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF67E2A4FD77ECB75110126 /* Pods_portalView.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +99,8 @@
 		6A92E43C2887F0AB00AE2817 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		6A92E43E2887F2D900AE2817 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		6A92E4402887F7F100AE2817 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
+		6A92E4422888015600AE2817 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6A92E444288839F700AE2817 /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		6AB51DEA287C12DC006FA205 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		6AB51DEC287C449B006FA205 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		6AB51DEF287C4701006FA205 /* WorkSans-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -127,6 +132,9 @@
 		6ACD2A1F287D67ED00324AE6 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		6ACD2A21287D699900324AE6 /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
 		6ACD2A23287D7F0600324AE6 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		6DF67E2A4FD77ECB75110126 /* Pods_portalView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_portalView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B65378BB9D1A584459CE0BA7 /* Pods-portalView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-portalView.debug.xcconfig"; path = "Target Support Files/Pods-portalView/Pods-portalView.debug.xcconfig"; sourceTree = "<group>"; };
+		C02E4058B0A5FE659018A119 /* Pods-portalView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-portalView.release.xcconfig"; path = "Target Support Files/Pods-portalView/Pods-portalView.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,17 +145,29 @@
 				6A2F9833288538A1001844CC /* SDWebImageSwiftUI in Frameworks */,
 				6A1C9B6B28816F70004A2B3D /* Contentful in Frameworks */,
 				6A92E4362887F05800AE2817 /* Lottie in Frameworks */,
+				A436A00E4106A33E96D6AA30 /* Pods_portalView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F24AEA2DF098F3F03D7E020 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B65378BB9D1A584459CE0BA7 /* Pods-portalView.debug.xcconfig */,
+				C02E4058B0A5FE659018A119 /* Pods-portalView.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6A393B5E2860D71400C98A2C = {
 			isa = PBXGroup;
 			children = (
 				6A393B692860D71400C98A2C /* portalView */,
 				6A393B682860D71400C98A2C /* Products */,
+				5F24AEA2DF098F3F03D7E020 /* Pods */,
+				754ACC883023DA46C725F242 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,6 +182,7 @@
 		6A393B692860D71400C98A2C /* portalView */ = {
 			isa = PBXGroup;
 			children = (
+				6A92E4422888015600AE2817 /* GoogleService-Info.plist */,
 				6AB51E1C287C4770006FA205 /* Info.plist */,
 				6A393B6A2860D71400C98A2C /* portalViewApp.swift */,
 				6A92E4372887F08D00AE2817 /* Lottie */,
@@ -207,6 +228,7 @@
 				6A92E4302886F9FD00AE2817 /* Buttons.swift */,
 				6A92E4322887C6F300AE2817 /* LoginView.swift */,
 				6A92E4402887F7F100AE2817 /* SuccessView.swift */,
+				6A92E444288839F700AE2817 /* UserStore.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -279,6 +301,14 @@
 			path = static;
 			sourceTree = "<group>";
 		};
+		754ACC883023DA46C725F242 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DF67E2A4FD77ECB75110126 /* Pods_portalView.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -286,9 +316,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A393B752860D71500C98A2C /* Build configuration list for PBXNativeTarget "portalView" */;
 			buildPhases = (
+				E6AF8C59693E85E1CEB0D183 /* [CP] Check Pods Manifest.lock */,
 				6A393B632860D71400C98A2C /* Sources */,
 				6A393B642860D71400C98A2C /* Frameworks */,
 				6A393B652860D71400C98A2C /* Resources */,
+				3E9ED63312AD002A4CB2D323 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -358,6 +390,7 @@
 				6AB51E0A287C4702006FA205 /* WorkSans-SemiBoldItalic.ttf in Resources */,
 				6AB51E17287C4702006FA205 /* WorkSans-ExtraBoldItalic.ttf in Resources */,
 				6A92E43A2887F08E00AE2817 /* loading.json in Resources */,
+				6A92E4432888015600AE2817 /* GoogleService-Info.plist in Resources */,
 				6AB51E06287C4702006FA205 /* WorkSans-VariableFont_wght.ttf in Resources */,
 				6AB51E14287C4702006FA205 /* WorkSans-Thin.ttf in Resources */,
 				6AB51E0D287C4702006FA205 /* WorkSans-ExtraLight.ttf in Resources */,
@@ -377,6 +410,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3E9ED63312AD002A4CB2D323 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-portalView/Pods-portalView-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-portalView/Pods-portalView-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-portalView/Pods-portalView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6AF8C59693E85E1CEB0D183 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-portalView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6A393B632860D71400C98A2C /* Sources */ = {
@@ -413,6 +488,7 @@
 				6ACD2A24287D7F0600324AE6 /* DataStore.swift in Sources */,
 				6A43B72A2875C74A00BA4EEF /* UpdateStore.swift in Sources */,
 				6A754808287562FA00A58F89 /* Extensions.swift in Sources */,
+				6A92E445288839F800AE2817 /* UserStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +611,7 @@
 		};
 		6A393B762860D71500C98A2C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B65378BB9D1A584459CE0BA7 /* Pods-portalView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -566,6 +643,7 @@
 		};
 		6A393B772860D71500C98A2C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C02E4058B0A5FE659018A119 /* Pods-portalView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

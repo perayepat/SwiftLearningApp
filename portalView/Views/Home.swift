@@ -11,6 +11,7 @@ struct Home: View {
     @State var showProfile = false
     @State var viewState = CGSize.zero
     @State var showContent = false
+    @EnvironmentObject var user: UserStore
     
     var body: some View {
         ZStack {
@@ -63,6 +64,26 @@ struct Home: View {
                             self.viewState = .zero
                         }
                 )
+            if user.showLogin{
+                LoginView()
+                    .overlay {
+                        VStack {
+                            HStack {
+                                Spacer()
+                                Image(systemName: "xmark")
+                                    .frame(width: 36, height: 36)
+                                    .foregroundColor(.white)
+                                    .background(Color.black)
+                                    .clipShape(Circle())
+                            }
+                            Spacer()
+                        }
+                        .padding()
+                        .onTapGesture {
+                            self.user.showLogin = false
+                        }
+                    }
+            }
             if showContent {
                 BlurView(style: .systemUltraThinMaterial).edgesIgnoringSafeArea(.all)
                 ContentView()
@@ -77,12 +98,13 @@ struct Home: View {
                             .clipShape(Circle())
                     }
                     Spacer()
-                }.offset(x: -16, y: 16)
-                    .transition(.move(edge: .top))
-                    .animation(.spring(response: 0.6, dampingFraction: 0.6, blendDuration: 0))
-                    .onTapGesture {
-                        self.showContent = false
-                    }
+                }
+                .offset(x: -16, y: 16)
+                .transition(.move(edge: .top))
+                .animation(.spring(response: 0.6, dampingFraction: 0.6, blendDuration: 0))
+                .onTapGesture {
+                    self.showContent = false
+                }
             }
         }
     }
@@ -91,6 +113,7 @@ struct Home: View {
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Home().environment(\.colorScheme, .dark)
+            .environmentObject(UserStore())
     }
 }
 

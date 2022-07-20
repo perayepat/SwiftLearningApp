@@ -6,6 +6,7 @@
     //
 
 import SwiftUI
+import FirebaseAuth
 
 struct LoginView: View {
     @State var email = ""
@@ -15,6 +16,7 @@ struct LoginView: View {
     @State var alertMessage = "Something went wrong!"
     @State var isLoading = false
     @State var isSuccess = false
+    @EnvironmentObject var user: UserStore
     
     
     
@@ -84,6 +86,7 @@ struct LoginView: View {
                 HStack{
                     Text("Forgot password")
                         .font(.subheadline)
+                        .foregroundColor(isFocused ? Color.white : Color("background1"))
                     
                     Spacer()
                     
@@ -103,10 +106,11 @@ struct LoginView: View {
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                .offset(y: isFocused ? 170 : 0)
                 .padding()
                 
             }
-            .offset(y: isFocused ? -300 : 0)
+            .offset(y: isFocused ? -180 : 0)
             .animation(isFocused ? .easeInOut : nil, value: isFocused)
             .onTapGesture {
                 self.isFocused = false
@@ -127,18 +131,24 @@ struct LoginView: View {
         self.hideKeyboard()
         self.isFocused = false
         self.isLoading = true
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        Auth.auth().signIn(withEmail: email, password: password){ (result,error) in
             self.isLoading = false
-           //self.showAlert = true
-            self.isSuccess = true
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.isSuccess = false
+            if error != nil{
+                self.alertMessage = error?.localizedDescription ?? ""
+                self.showAlert = true
+            }else{
+                self.isSuccess = true
+                self.user.isLogged = true
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    self.isSuccess = false
+                    self.email = ""
+                    self.password = ""
+                    self.user.showLogin = false
+                }
             }
         }
-        
-      
     }
     
         //MARK: Dismiss Keyboard
@@ -189,14 +199,14 @@ struct CoverView: View {
                     .offset(x: -150, y: -200)
                     .rotationEffect(Angle(degrees: show ? 360 + 90: 90))
                     .blendMode(.plusDarker)
-                    //                    .animation(.linear(duration: 120).repeatForever(autoreverses: false), value: show)
+                    .animation(.linear(duration: 120).repeatForever(autoreverses: false), value: show)
                     .onAppear{ self.show = true }
                 
                 Image("Blob")
                     .offset(x: -200, y: -250)
                     .rotationEffect(Angle(degrees: show ? 360 : 0), anchor: .leading)
                     .blendMode(.overlay)
-                    //                    .animation(Animation.linear(duration: 100).repeatForever(autoreverses: false), value: show)
+                    .animation(Animation.linear(duration: 100).repeatForever(autoreverses: false), value: show)
             }
         )
         .background(
