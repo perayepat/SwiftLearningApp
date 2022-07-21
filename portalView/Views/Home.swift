@@ -23,14 +23,7 @@ struct Home: View {
                 //MARK: Home view & Top Bar
             HomeView(showProfile: $showProfile, showContent: $showContent)
                 .padding(.top, 44)
-                .background(
-                    //MARK: TopView backgorund effect
-                    VStack {
-                        LinearGradient(gradient: Gradient(colors: [Color("background1"), Color("background2")]), startPoint: .top, endPoint: .bottom)
-                            .frame(height: 200)
-                        Spacer()
-                    }
-                )
+          
                 .background(Color("background1"))
                 ///Effects
                 .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
@@ -42,7 +35,7 @@ struct Home: View {
                 .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0), value: showProfile)
                 .edgesIgnoringSafeArea(.all)
             
-            MenuView()
+            MenuView(showProfile: $showProfile)
                 .background(Color.black.opacity(0.001))
                 .offset(y: showProfile ? 0 : screen.height)
                 .offset(y: viewState.height)
@@ -112,7 +105,7 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home().environment(\.colorScheme, .dark)
+        Home()
             .environmentObject(UserStore())
     }
 }

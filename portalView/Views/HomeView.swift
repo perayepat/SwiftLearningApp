@@ -27,7 +27,7 @@ struct HomeView: View {
                         self.showUpdate.toggle()
                     } label: {
                         Image(systemName: "bell")
-//                            .renderingMode(.original)
+                            //                            .renderingMode(.original)
                             .foregroundColor(.primary)
                             .font(.system(size: 16,weight: .medium))
                             .frame(width: 36, height: 36)
@@ -76,19 +76,29 @@ struct HomeView: View {
                 }
                 .offset(y: -30)
                 
-                HStack {
-                    Text("Course")
-                        .font(.title)
-                        .bold()
-                    Spacer()
-                }
-                .padding(.leading,30)
-                .offset(y: -60)
-                SectionView(section: sectionData[2], width: screen.width - 60, height: 275)
-                    .offset(y: -60)
+                CourseList()
+                    .offset(y: -80)
+                    //                HStack {
+                    //                    Text("Course")
+                    //                        .font(.title)
+                    //                        .bold()
+                    //                    Spacer()
+                    //                }
+                    //                .padding(.leading,30)
+                    //                .offset(y: -60)
+                    //                SectionView(section: sectionData[2], width: screen.width - 60, height: 275)
+                    //                    .offset(y: -60)
                 
                 Spacer()
             }
+//            .background(
+//                //MARK: TopView backgorund effect
+//                VStack {
+//                    LinearGradient(gradient: Gradient(colors: [Color("background1"), Color("background2")]), startPoint: .top, endPoint: .bottom)
+//                        .frame(height: 160)
+//                    Spacer()
+//                }
+//            )
         }
     }
 }
@@ -96,6 +106,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(showProfile: .constant(true),showContent: .constant(true))
+            .environmentObject(UserStore())
     }
 }
 

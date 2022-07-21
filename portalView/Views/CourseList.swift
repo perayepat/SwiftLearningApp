@@ -22,6 +22,7 @@ struct CourseList: View {
     @ObservedObject var store = CourseStore()
     @State var active  = false
     @State var activeIndex = -1
+    @State var isScrollable = false
     var body: some View {
         ZStack {
             Color.black.opacity(active ? 0.5 : 0)
@@ -43,6 +44,7 @@ struct CourseList: View {
                     ForEach(store.courses.indices, id: \.self) { index in
                         GeometryReader { geo in
                             CourseView(
+                                isScrollable: isScrollable,
                                 show: self.$store.courses[index].show,
                                 active: self.$active,
                                 activeIndex: self.$activeIndex,
@@ -71,10 +73,12 @@ struct CourseList: View {
 struct CourseList_Previews: PreviewProvider {
     static var previews: some View {
         CourseList()
+            .environmentObject(UserStore())
     }
 }
 
 struct CourseView: View {
+    @State var isScrollable: Bool
     @Binding var show: Bool
     @Binding var active: Bool
     @Binding var activeIndex: Int
@@ -154,11 +158,15 @@ struct CourseView: View {
                 } else {
                     self.activeIndex = -1
                 }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.7){
+                    self.isScrollable = true
+                }
             }
-            if show {
+            if isScrollable {
                 CourseDetailView(course: course, show: $show,active: $active, activeIndex: $activeIndex)
                     .background(Color.white)
-                    .animation(nil, value: show)
+                    .transition(.identity)
+//                    .animation(nil, value: show)
             }
         }
         .frame(height: show ? screen.height : 280)
